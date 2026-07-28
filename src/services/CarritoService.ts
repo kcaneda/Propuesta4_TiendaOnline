@@ -1,5 +1,5 @@
 import { Carrito } from "../models/Carrito";
-import { CarritoRepository } from "../repository/CarritoRepository";
+import { CarritoRepository } from "../data/CarritoRepository";
 
 export class CarritoService {
     private repository = new CarritoRepository;

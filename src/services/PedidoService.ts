@@ -1,7 +1,7 @@
 import { Estado } from "../models/Estado";
 import { Pedido } from "../models/Pedido";
-import { CarritoRepository } from "../repository/CarritoRepository";
-import { PedidoRepository } from "../repository/PedidoRepository";
+import { CarritoRepository } from "../data/CarritoRepository";
+import { PedidoRepository } from "../data/PedidoRepository";
 import { CarritoService } from "./CarritoService";
 import { EnvioService } from "./EnvioService";
 import { ProductService } from "./ProductoService";
@@ -33,7 +33,7 @@ export class PedidoService {
         pedidos.push(pedido);
         await this.repository.guardarPedidos(pedidos);
         console.log("Pedido agregado correctamente.");
-        this.envioService.crearEnvio({id: pedido.id, pedidoId: pedido.id, fechaEnvio: new Date(), estado: Estado.ENVIADO });
+        this.envioService.crearEnvio({id: pedido.id, idPedido: pedido.id, fechaEnvio: new Date(), estado: Estado.ENVIADO });
 
     }
 
@@ -59,5 +59,6 @@ export class PedidoService {
         await this.repository.guardarPedidos(nuevos);
         console.log("Pedido cancelado correctamente.");
         await this.envioService.eliminar(id);
+        this.envioService.eliminar(id);
     }
 }

@@ -1,6 +1,6 @@
 import { Categorias } from "../models/Categorias";
 import { Producto } from "../models/Producto";
-import { ProductoRepository } from "../repository/ProductoRepository";
+import { ProductoRepository } from "../data/ProductoRepository";
 
 export class ProductService {
     private repository = new ProductoRepository;
